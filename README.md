@@ -24,7 +24,7 @@ The file ProjectRock.ric is the OpenMotor File. It includes critical simulation 
 - Internal Pressure Simulation:
 <img width="822" alt="image" src="https://github.com/user-attachments/assets/7d0c0f03-4899-42ae-b5a4-44228dd83c28">
 
-- The pressure peaks at around 360 psi, which in N/m^2 is $5.516*10^6 N/{m}^2 $. The atmospheric pressure is $1.013*10^5 N/{m}^2$.
+- The pressure peaks at around 360 psi, which in $\frac{N}{m^2}$ is $5.516 \times 10^6$. The atmospheric pressure is $1.013 \times 10^5 \, \frac{N}{m^2}$.
 
 # Thickness of the Cylinder:
 - This creates stress in longitudinal and hoop direction on the motor which the case has to withstand. In no direction should the stress exceed the material's yield strength(maximum stress in the elastic region).
