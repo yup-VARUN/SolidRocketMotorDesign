@@ -6,19 +6,25 @@ Take input some of the following user's input parameters, that will decide the o
 - Peak internal pressure
 - Internal Case Diameter
 - Case Material
-- Environment Parameters:
+- Thermal Liner Material
+- O-Ring Material
+- Bolt profile(Bolt diameter like M5, M4, ...; assuming the industry standard thread profile)
+- Safety Factor
+- Environment Variables:
   - Environmental Pressure/Altitude
   - Environmental Temperature
-  - Simulate Pressure, Altitude and Temperature for a flight.
+    **OR**
+  - Simulate Pressure, Altitude and Temperature for a flight
 
-Some of the parameters will be taken from the 
-- Case's Yield Strength(will come from the )
+Some of the parameters will be taken from the Materials Database:
+- Case's Yield Strength
 - Bolt's Yield Strength
-- Bolt profile(Bolt diameter like M5, M4, ...; assuming industry standard thread profile)
 
-And apply the pressure constraints to calculate and return the following design parameters:
-- Minimum thickness of the case(for a given safety factor)
+And execute a series of Physics based constraints and simulations to calculate and return the following design parameters:
+- Minimum thickness of the case
 - Minimum number of required bolts at each end
+- Minimum case thickness
+- Minimum thermal liner thickness
 - Minimum distance of required bolts from the edge
 - Minimum distance of required bolts from the other bolt holes
 
@@ -31,19 +37,19 @@ The file ProjectRock.ric is the OpenMotor File. It includes critical simulation 
 
 - The pressure peaks at around 360 psi, which in $\frac{N}{m^2}$ is $5.516 \times 10^6$. The atmospheric pressure is $1.013 \times 10^5 \, \frac{N}{m^2}$.
 
-# Thickness of the Cylinder:
-- This creates stress in longitudinal and hoop direction on the motor which the case has to withstand. In no direction should the stress exceed the material's yield strength(maximum stress in the elastic region).
-  - Hoop Stress is nearly twice(exactly two, if neglecting the thickness from calculations) as large as the longitudinal stress in all cylindrical pressure vessels.<br>
+### Thickness of the Cylinder:
+- This creates stress in longitudinal and hoop directions on the motor, which the case has to withstand. In no direction should the stress exceed the material's yield strength(maximum stress in the elastic region).
+  - Hoop Stress is nearly twice(exactly only when neglecting the case thickness from the calculations) as large as the longitudinal stress in all cylindrical pressure vessels.<br>
   - <img width="280" alt="image" src="image.png">
 
-# Spacing and Number of Screws:
+### Number of Bolts & their required Spacing:
 There could be different faliures in screws:
 - One of them is when the bolt hole tear out from the edge of material. For not letting that happen it's emperically evident that we should place the bolts at least 1 bolt diameter away from any edge. For some materials this factor could also be 1.5 to 2 dimaters away from the edge.
 <br>
 Specifics could be seen in the following source:
 ![alt text](image-1.png)
 
-# Future of this Software:
+# Features yet to be implemented:
 ### 0. <u>Databases</u>:
 Will fetch data about different materials from websites and openly available datasets and put them together in a fast, light weight(potentially SQLite3) database. It should have all most commonly used materials in the industry(especially aerospace and aeronautics). For each material there should have to be different tables like:
 - **Rich Materials Database**:
@@ -62,7 +68,7 @@ Will fetch data about different materials from websites and openly available dat
       - rows: {T1, T2, T3, ..., Tn}
         - where [T1, Tn] is the discrete range of temperatures.
 - Vector Database interfaced with an instance of an LLM(or through an API):
-  - 
+  - to implement Retrieval Augmented Generation from a highly specialized text corpus to help.
 ### 1. <u>A nice web app with</u>:
 - An amazing landing page which will include user login(with options to login using google, meta, ...), which will require a user database.
   - Each user have to have their own tables with chats history and ...
