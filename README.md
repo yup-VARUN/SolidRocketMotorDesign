@@ -2,7 +2,8 @@
 The goal of this software is to calculate some crucial parameters for designing a solid rocket motor with the retainers held in place by radial bolts.<br>
 Before you begin looking at the code you should know that everything is in SI units(metric system), the only good units in existance.<br>
 
-![Solid Rocket Motor Design](https://github.com/user-attachments/assets/c40cc838-3cd8-417d-956a-5c5beb9e7c97)
+![Solid Rocket Motor Design](https://github.com/user-attachments/assets/9a9422c4-4a16-46e8-9048-ff2516f6b46a)
+
 
 Take input some of the following user's input parameters, that will decide the overall power of the rocket engine:
 - Peak internal pressure
